@@ -27,6 +27,7 @@ export default {
   },
   mounted() {
     this.getTotals();
+    this.getScheduleRange();
   },
   methods: {
     ...mapActions([
@@ -35,7 +36,18 @@ export default {
       "setTotalSpecialPrice",
       "setTotalSpecialSurprise",
       "setTotalTopPrice",
-      "setTotalGiftCard"
+      "setTotalGiftCard",
+
+      "setGiftCardScheduleRangeA",
+      "setGiftCardScheduleRangeB",
+      "setGiftCardScheduleRangeC",
+      "setGiftCardScheduleRangeD",
+      "setGiftCardScheduleRangeE",
+
+      "setTopPriceScheduleRangeA",
+      "setTopPriceScheduleRangeB"
+
+
     ]),
     async getTotals(){
      const response = await service.getTotals();
@@ -44,7 +56,24 @@ export default {
      this.setTotalSpecialSurprise(response.totalSpecialSurprice)
      this.setTotalTopPrice(response.totalTopPrice)
      this.setTotalGiftCard(response.totalGitfCard)
-    }
+    },
+
+    async getScheduleRange(){
+      const response = await service.getHour();
+      console.log(response)
+      this.setGiftCardScheduleRangeA(response.giftCardScheduleRangeA)
+      this.setGiftCardScheduleRangeB(response.giftCardScheduleRangeB)
+      this.setGiftCardScheduleRangeC(response.giftCardScheduleRangeC)
+      this.setGiftCardScheduleRangeD(response.giftCardScheduleRangeD)
+      this.setGiftCardScheduleRangeE(response.giftCardScheduleRangeE)
+      
+      this.setTopPriceScheduleRangeA(response.topPriceScheduleRangeA)
+      this.setTopPriceScheduleRangeB(response.topPriceScheduleRangeB)
+
+
+      this.setGif
+      }
+    
   },
 
   watch: {
