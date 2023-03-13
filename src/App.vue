@@ -69,8 +69,6 @@ export default {
 
       this.setTopPriceScheduleRangeA(response.topPriceScheduleRangeA);
       this.setTopPriceScheduleRangeB(response.topPriceScheduleRangeB);
-
-      this.setGif;
     },
   },
 
