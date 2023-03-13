@@ -193,12 +193,12 @@
             <div class="row mb-4">
               <div class="col">
                 <b-form-group id="input-group-16" label="TOP Price start 1" label-for="input-16">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeAUp"></b-form-input>
+                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeADown"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col">
                 <b-form-group id="input-group-17" label="TOP Proce end 1" label-for="input-17">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeADown"></b-form-input>
+                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeAUp"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col">
@@ -215,12 +215,12 @@
             <div class="row mb-4">
               <div class="col">
                 <b-form-group id="input-group-18" label="TOP Proce start 2" label-for="input-18">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBUp"></b-form-input>
+                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBDown"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col">
                 <b-form-group id="input-group-19" label="TOP Proce end 2" label-for="input-19">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBDown"></b-form-input>
+                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBUp"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col">
@@ -677,6 +677,7 @@ export default {
     refresh() {
       this.getTotals();
       this.getScheduleRange();
+      alert('The data was refresh')
 
       /*const schedu = {
         giftCardScheduleRangeA: {
