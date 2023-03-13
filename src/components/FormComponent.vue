@@ -236,12 +236,11 @@
 
             <div class="form-check d-flex justify-content-center mb-4">
               <b-button type="submit" variant="primary">Submit</b-button>
+              <b-button type="submit" variant="secondary" @click.prevent="refresh">refresh</b-button>
             </div>
-          </b-form>
 
-          <div class="form-check d-flex justify-content-center mb-4">
-            <b-button type="submit" variant="secondary" @click.prevent="refresh">refresh</b-button>
-          </div>
+          </b-form>
+          
         </div>
         <div class="col-md-3" align-self-center></div>
       </div>
