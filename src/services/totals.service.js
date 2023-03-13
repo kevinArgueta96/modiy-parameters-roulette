@@ -26,7 +26,6 @@ async function getHour() {
 }
 
 async function setHour(data) {
-  console.log(data)
   const url = `https://rouletee-app-default-rtdb.europe-west1.firebasedatabase.app/schedule-range.json`;
   const options = {
     method: "PUT",

@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import  FormComponent  from "./components/FormComponent.vue";
-import { mapGetters, mapActions } from 'vuex';
-import service from '@/services/totals.service'
+import FormComponent from "./components/FormComponent.vue";
+import { mapGetters, mapActions } from "vuex";
+import service from "@/services/totals.service";
 
 export default {
   name: "App",
   components: {
-    FormComponent
+    FormComponent,
   },
   data: () => {
     return {};
@@ -37,6 +37,8 @@ export default {
       "setTotalSpecialSurprise",
       "setTotalTopPrice",
       "setTotalGiftCard",
+      "setTotalSpin",
+      
 
       "setGiftCardScheduleRangeA",
       "setGiftCardScheduleRangeB",
@@ -45,35 +47,31 @@ export default {
       "setGiftCardScheduleRangeE",
 
       "setTopPriceScheduleRangeA",
-      "setTopPriceScheduleRangeB"
-
-
+      "setTopPriceScheduleRangeB",
     ]),
-    async getTotals(){
-     const response = await service.getTotals();
-     this.setTotalReplay(response.totalReplay)
-     this.setTotalSpecialPrice(response.totalSpecialPrice)
-     this.setTotalSpecialSurprise(response.totalSpecialSurprice)
-     this.setTotalTopPrice(response.totalTopPrice)
-     this.setTotalGiftCard(response.totalGitfCard)
+    async getTotals() {
+      const response = await service.getTotals();
+      this.setTotalReplay(response.totalReplay);
+      this.setTotalSpecialPrice(response.totalSpecialPrice);
+      this.setTotalSpecialSurprise(response.totalSpecialSurprice);
+      this.setTotalTopPrice(response.totalTopPrice);
+      this.setTotalGiftCard(response.totalGitfCard);
+      this.setTotalSpin(response.totalSpin)
     },
 
-    async getScheduleRange(){
+    async getScheduleRange() {
       const response = await service.getHour();
-      console.log(response)
-      this.setGiftCardScheduleRangeA(response.giftCardScheduleRangeA)
-      this.setGiftCardScheduleRangeB(response.giftCardScheduleRangeB)
-      this.setGiftCardScheduleRangeC(response.giftCardScheduleRangeC)
-      this.setGiftCardScheduleRangeD(response.giftCardScheduleRangeD)
-      this.setGiftCardScheduleRangeE(response.giftCardScheduleRangeE)
-      
-      this.setTopPriceScheduleRangeA(response.topPriceScheduleRangeA)
-      this.setTopPriceScheduleRangeB(response.topPriceScheduleRangeB)
+      this.setGiftCardScheduleRangeA(response.giftCardScheduleRangeA);
+      this.setGiftCardScheduleRangeB(response.giftCardScheduleRangeB);
+      this.setGiftCardScheduleRangeC(response.giftCardScheduleRangeC);
+      this.setGiftCardScheduleRangeD(response.giftCardScheduleRangeD);
+      this.setGiftCardScheduleRangeE(response.giftCardScheduleRangeE);
 
+      this.setTopPriceScheduleRangeA(response.topPriceScheduleRangeA);
+      this.setTopPriceScheduleRangeB(response.topPriceScheduleRangeB);
 
-      this.setGif
-      }
-    
+      this.setGif;
+    },
   },
 
   watch: {

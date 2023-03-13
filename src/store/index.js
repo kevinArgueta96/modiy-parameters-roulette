@@ -10,6 +10,7 @@ export default new Vuex.Store({
     totalSpecialSurprise:0,
     totalTopPrice:0,
     totalGiftCard:0,
+    totalSpin:0,
 
     giftCardScheduleRangeA:[],
     giftCardScheduleRangeB:[],
@@ -26,6 +27,8 @@ export default new Vuex.Store({
     totalSpecialSurprise: (state) => state.totalSpecialSurprise,
     totalTopPrice: (state) => state.totalTopPrice,
     totalGiftCard: (state) => state.totalGiftCard,
+    totalSpin: (state) => state.totalSpin,
+    
 
     giftCardScheduleRangeA: (state) => state.giftCardScheduleRangeA,
     giftCardScheduleRangeB: (state) => state.giftCardScheduleRangeB,
@@ -54,6 +57,10 @@ export default new Vuex.Store({
     setTotalGiftCard(state,payload){
       state.totalGiftCard = payload;
     },
+    setTotalSpin(state,payload){
+      state.totalSpin = payload;
+    },
+
 
     setGiftCardScheduleRangeA(state,payload){
       state.giftCardScheduleRangeA = payload;
@@ -94,6 +101,11 @@ export default new Vuex.Store({
     setTotalGiftCard(context,payload){
       context.commit('setTotalGiftCard',payload)
     },
+    setTotalSpin(context,payload){
+      context.commit('setTotalSpin',payload)
+
+    },
+
 
     setGiftCardScheduleRangeA(context,payload){
       context.commit('setGiftCardScheduleRangeA',payload)
