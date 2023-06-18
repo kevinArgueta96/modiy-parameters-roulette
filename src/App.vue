@@ -81,27 +81,6 @@ export default {
   },
 
   watch: {
-    isVisbleWinImg(value) {
-      if (value) {
-        setTimeout(() => {
-          this.isVisbleWinImg = !this.isVisbleWinImg;
-        }, this.timeToShowOptions);
-      }
-    },
-    isVisbleLooseImg(value) {
-      if (value) {
-        setTimeout(() => {
-          this.isVisbleLooseImg = !this.isVisbleLooseImg;
-        }, this.timeToShowOptions);
-      }
-    },
-    isVisibleConfetti(value) {
-      if (value) {
-        setTimeout(() => {
-          this.isVisibleConfetti = !this.isVisibleConfetti;
-        }, this.timeToShowOptions);
-      }
-    },
   },
 };
 </script>
