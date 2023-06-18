@@ -2,13 +2,13 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-1"></div>
+        <div class="col-md-12">
           <b-form @submit.prevent="onSubmit">
             <h1>Totals</h1>
 
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-1" label="Total Replay" label-for="input-1">
                   <b-form-input
                     id="input-1"
@@ -19,7 +19,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-2" label="Total Special Price" label-for="input-2">
                   <b-form-input
                     id="input-2"
@@ -30,10 +30,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-3" label="Total Special Surprise" label-for="input-3">
                   <b-form-input
                     id="input-3"
@@ -44,7 +41,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-4" label="Total Top Price" label-for="input-4">
                   <b-form-input
                     id="input-4"
@@ -55,10 +52,8 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-5" label="Total Gift Card" label-for="input-5">
                   <b-form-input
                     id="input-5"
@@ -69,7 +64,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <b-form-group id="input-group-21" label="Total Spin" label-for="input-21">
                   <b-form-input
                     id="input-5"
@@ -81,6 +76,7 @@
                 </b-form-group>
               </div>
             </div>
+
             <h1>Gift Cards</h1>
             <div>
               <GiftComponent
@@ -104,8 +100,12 @@
             </div>
 
             <div class="form-check d-flex justify-content-center mb-4">
-              <b-button type="submit" variant="primary">Submit</b-button>
-              <b-button type="submit" variant="secondary" @click.prevent="refresh">refresh</b-button>
+              <div class="col-md-1">
+                <b-button type="submit" variant="primary">Submit</b-button>
+              </div>
+              <div class="col-md-1">
+                <b-button type="submit" variant="secondary" @click.prevent="refresh">refresh</b-button>
+              </div>
             </div>
           </b-form>
         </div>
@@ -211,7 +211,7 @@ export default {
       "setTotalSpin",
 
       "setGiftCards",
-       "setTopPrices"
+      "setTopPrices"
     ]),
     async getTotals() {
       const response = await service.getTotals();
@@ -228,7 +228,7 @@ export default {
       const topPrices = await service.getTopPrices();
 
       this.setGiftCards(giftCard);
-      this.setTopPrices(topPrices)
+      this.setTopPrices(topPrices);
     },
 
     refresh() {
@@ -282,7 +282,6 @@ export default {
       service.setNewTotal(data);
       service.setGiftCards(giftCards);
       service.setTopPrices(topPrices);
-
 
       alert("All data is update");
       /*if(selectedTotalReplay)*/

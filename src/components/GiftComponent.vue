@@ -1,7 +1,6 @@
 <template>
   <div class="row mb-4">
     <div class="col">
-      {{ type }}
       <b-form-group id="input-group-6" label="Start Gift Card 1" label-for="input-6">
         <b-form-input type="time" v-model="rangeDown"></b-form-input>
       </b-form-group>
