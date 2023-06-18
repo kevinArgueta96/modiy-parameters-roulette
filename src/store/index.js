@@ -12,14 +12,8 @@ export default new Vuex.Store({
     totalGiftCard:0,
     totalSpin:0,
 
-    giftCardScheduleRangeA:[],
-    giftCardScheduleRangeB:[],
-    giftCardScheduleRangeC:[],
-    giftCardScheduleRangeD:[],
-    giftCardScheduleRangeE:[],
-
-    topPriceScheduleRangeA:[],
-    topPriceScheduleRangeB:[]
+    giftCards: [],
+    topPrices: [],
   },
   getters: {
     totalReplay: (state) => state.totalReplay,
@@ -29,17 +23,8 @@ export default new Vuex.Store({
     totalGiftCard: (state) => state.totalGiftCard,
     totalSpin: (state) => state.totalSpin,
     
-
-    giftCardScheduleRangeA: (state) => state.giftCardScheduleRangeA,
-    giftCardScheduleRangeB: (state) => state.giftCardScheduleRangeB,
-    giftCardScheduleRangeC: (state) => state.giftCardScheduleRangeC,
-    giftCardScheduleRangeD: (state) => state.giftCardScheduleRangeD,
-    giftCardScheduleRangeE: (state) => state.giftCardScheduleRangeE,
-
-    topPriceScheduleRangeA: (state) => state.topPriceScheduleRangeA,
-    topPriceScheduleRangeB: (state) => state.topPriceScheduleRangeB,
-
-
+    giftCards: (state) => state.giftCards,
+    topPrices: (state) => state.topPrices,
   },
   mutations: {
     setTotalReplay(state,payload){
@@ -62,27 +47,11 @@ export default new Vuex.Store({
     },
 
 
-    setGiftCardScheduleRangeA(state,payload){
-      state.giftCardScheduleRangeA = payload;
+    setGiftCards(state, payload) {
+      state.giftCards = payload;
     },
-    setGiftCardScheduleRangeB(state,payload){
-      state.giftCardScheduleRangeB = payload;
-    },
-    setGiftCardScheduleRangeC(state,payload){
-      state.giftCardScheduleRangeC = payload;
-    },
-    setGiftCardScheduleRangeD(state,payload){
-      state.giftCardScheduleRangeD = payload;
-    },
-    setGiftCardScheduleRangeE(state,payload){
-      state.giftCardScheduleRangeE = payload;
-    },
-
-    setTopPriceScheduleRangeA(state,payload){
-      state.topPriceScheduleRangeA = payload;
-    },
-    setTopPriceScheduleRangeB(state,payload){
-      state.topPriceScheduleRangeB = payload;
+    setTopPrices(state, payload) {
+      state.topPrices = payload;
     },
   },
   actions: {
@@ -106,35 +75,11 @@ export default new Vuex.Store({
 
     },
 
-
-    setGiftCardScheduleRangeA(context,payload){
-      context.commit('setGiftCardScheduleRangeA',payload)
-
+    setGiftCards(context, payload) {
+      context.commit('setGiftCards', payload)
     },
-    setGiftCardScheduleRangeB(context,payload){
-      context.commit('setGiftCardScheduleRangeB',payload)
-
-    },
-    setGiftCardScheduleRangeC(context,payload){
-      context.commit('setGiftCardScheduleRangeC',payload)
-
-    },
-    setGiftCardScheduleRangeD(context,payload){
-      context.commit('setGiftCardScheduleRangeD',payload)
-
-    },
-    setGiftCardScheduleRangeE(context,payload){
-      context.commit('setGiftCardScheduleRangeE',payload)
-
-    },
-
-    setTopPriceScheduleRangeA(context,payload){
-      context.commit('setTopPriceScheduleRangeA',payload)
-
-    },
-    setTopPriceScheduleRangeB(context,payload){
-      context.commit('setTopPriceScheduleRangeB',payload)
-
+    setTopPrices(context, payload) {
+      context.commit('setTopPrices', payload)
     },
   },
   modules: {

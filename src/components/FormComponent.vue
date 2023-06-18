@@ -5,6 +5,8 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <b-form @submit.prevent="onSubmit">
+            <h1>Totals</h1>
+
             <div class="row">
               <div class="col-md-6">
                 <b-form-group id="input-group-1" label="Total Replay" label-for="input-1">
@@ -79,168 +81,33 @@
                 </b-form-group>
               </div>
             </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-6" label="Start Gift Card 1" label-for="input-6">
-                  <b-form-input type="time" v-model="selectedGiftCardDownRangeA"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-7" label="End Gift Card 1" label-for="input-7">
-                  <b-form-input type="time" v-model="selectedGiftCardTopRangeA"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-1"
-                  v-model="selectedGiftCardRangeAStatus"
-                  name="checkbox-1"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
+            <h1>Gift Cards</h1>
+            <div>
+              <GiftComponent
+                v-for="(giftCard, index) in giftCards"
+                :key="index"
+                :giftProperties="giftCard"
+                :indexGift="index"
+                :type="`card`"
+              />
             </div>
 
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-8" label="Start Gift Card 2" label-for="input-8">
-                  <b-form-input type="time" v-model="selectedGiftCardDownRangeB"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-9" label="End Gift Card 2" label-for="input-9">
-                  <b-form-input type="time" v-model="selectedGiftCardTopRangeB"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-2"
-                  v-model="selectedGiftCardRangeBStatus"
-                  name="checkbox-2"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-10" label="Start Gift Card 3" label-for="input-10">
-                  <b-form-input type="time" v-model="selectedGiftCardDownRangeC"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-11" label="End Gift Card 3" label-for="input-11">
-                  <b-form-input type="time" v-model="selectedGiftCardTopRangeC"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-3"
-                  v-model="selectedGiftCardRangeCStatus"
-                  name="checkbox-3"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-12" label="Start Gift Card 4" label-for="input-12">
-                  <b-form-input type="time" v-model="selectedGiftCardDownRangeD"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-13" label="End Gift Card 4" label-for="input-13">
-                  <b-form-input type="time" v-model="selectedGiftCardTopRangeD"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-4"
-                  v-model="selectedGiftCardRangeDStatus"
-                  name="checkbox-4"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-14" label="Start Gift Card 5" label-for="input-14">
-                  <b-form-input type="time" v-model="selectedGiftCardDownRangeE"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-15" label="End Gift Card 5" label-for="input-15">
-                  <b-form-input type="time" v-model="selectedGiftCardTopRangeE"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-5"
-                  v-model="selectedGiftCardRangeEStatus"
-                  name="checkbox-5"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-16" label="TOP Price start 1" label-for="input-16">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeADown"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-17" label="TOP Proce end 1" label-for="input-17">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeAUp"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-6"
-                  v-model="selectedTopPriceScheduleRangeAStatus"
-                  name="checkbox-6"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col">
-                <b-form-group id="input-group-18" label="TOP Proce start 2" label-for="input-18">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBDown"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-group id="input-group-19" label="TOP Proce end 2" label-for="input-19">
-                  <b-form-input type="time" v-model="selectedTopPriceScheduleRangeBUp"></b-form-input>
-                </b-form-group>
-              </div>
-              <div class="col">
-                <b-form-checkbox
-                  id="checkbox-7"
-                  v-model="selectedTopPriceScheduleRangeBStatus"
-                  name="checkbox-7"
-                  value="accepted"
-                  unchecked-value="not_accepted"
-                >The price is given</b-form-checkbox>
-              </div>
+            <h1>Top Prices</h1>
+            <div>
+              <GiftComponent
+                v-for="(topPrice, index) in topPrices"
+                :key="index"
+                :giftProperties="topPrice"
+                :indexGift="index"
+                :type="`top`"
+              />
             </div>
 
             <div class="form-check d-flex justify-content-center mb-4">
               <b-button type="submit" variant="primary">Submit</b-button>
               <b-button type="submit" variant="secondary" @click.prevent="refresh">refresh</b-button>
             </div>
-
           </b-form>
-          
         </div>
         <div class="col-md-3" align-self-center></div>
       </div>
@@ -249,15 +116,19 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import GiftComponent from "./GiftComponent.vue";
 import service from "@/services/totals.service";
 
 export default {
+  components: {
+    GiftComponent
+  },
   data() {
     return {
-      value: "",
+      value: ""
     };
   },
-  mounted() {},
+
   computed: {
     ...mapGetters([
       "totalReplay",
@@ -267,311 +138,9 @@ export default {
       "totalGiftCard",
       "totalSpin",
 
-      "giftCardScheduleRangeA",
-      "giftCardScheduleRangeB",
-      "giftCardScheduleRangeC",
-      "giftCardScheduleRangeD",
-      "giftCardScheduleRangeE",
-
-      "topPriceScheduleRangeA",
-      "topPriceScheduleRangeB",
+      "giftCards",
+      "topPrices"
     ]),
-
-    //RANGES A
-    selectedGiftCardTopRangeA: {
-      get() {
-        return this.giftCardScheduleRangeA.rangeTop;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeA;
-        range.rangeTop = value;
-        this.setGiftCardScheduleRangeA(range);
-      },
-    },
-
-    selectedGiftCardDownRangeA: {
-      get() {
-        return this.giftCardScheduleRangeA.rangeDown;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeA;
-        range.rangeDown = value;
-        this.setGiftCardScheduleRangeA(range);
-      },
-    },
-    selectedGiftCardRangeAStatus: {
-      get() {
-        if (this.giftCardScheduleRangeA.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.giftCardScheduleRangeA;
-        if (value === "accepted") {
-          status.given = true;
-          this.setGiftCardScheduleRangeA(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setGiftCardScheduleRangeA(status);
-        }
-      },
-    },
-
-    //RANGES B
-    selectedGiftCardTopRangeB: {
-      get() {
-        return this.giftCardScheduleRangeB.rangeTop;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeB;
-        range.rangeTop = value;
-        this.setGiftCardScheduleRangeB(range);
-      },
-    },
-
-    selectedGiftCardDownRangeB: {
-      get() {
-        return this.giftCardScheduleRangeB.rangeDown;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeB;
-        range.rangeDown = value;
-        this.setGiftCardScheduleRangeB(range);
-      },
-    },
-    selectedGiftCardRangeBStatus: {
-      get() {
-        if (this.giftCardScheduleRangeB.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.giftCardScheduleRangeB;
-        if (value === "accepted") {
-          status.given = true;
-          this.setGiftCardScheduleRangeB(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setGiftCardScheduleRangeB(status);
-        }
-      },
-    },
-
-    //RANGES C
-    selectedGiftCardTopRangeC: {
-      get() {
-        return this.giftCardScheduleRangeC.rangeTop;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeC;
-        range.rangeTop = value;
-        this.setGiftCardScheduleRangeC(range);
-      },
-    },
-
-    selectedGiftCardDownRangeC: {
-      get() {
-        return this.giftCardScheduleRangeC.rangeDown;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeC;
-        range.rangeDown = value;
-        this.setGiftCardScheduleRangeC(range);
-      },
-    },
-    selectedGiftCardRangeCStatus: {
-      get() {
-        if (this.giftCardScheduleRangeC.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.giftCardScheduleRangeC;
-        if (value === "accepted") {
-          status.given = true;
-          this.setGiftCardScheduleRangeC(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setGiftCardScheduleRangeC(status);
-        }
-      },
-    },
-
-    //RANGES D
-    selectedGiftCardTopRangeD: {
-      get() {
-        return this.giftCardScheduleRangeD.rangeTop;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeD;
-        range.rangeTop = value;
-        this.setGiftCardScheduleRangeD(range);
-      },
-    },
-
-    selectedGiftCardDownRangeD: {
-      get() {
-        return this.giftCardScheduleRangeD.rangeDown;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeD;
-        range.rangeDown = value;
-        this.setGiftCardScheduleRangeD(range);
-      },
-    },
-    selectedGiftCardRangeDStatus: {
-      get() {
-        if (this.giftCardScheduleRangeD.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.giftCardScheduleRangeD;
-        if (value === "accepted") {
-          status.given = true;
-          this.setGiftCardScheduleRangeD(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setGiftCardScheduleRangeD(status);
-        }
-      },
-    },
-
-    //RANGES E
-    selectedGiftCardTopRangeE: {
-      get() {
-        return this.giftCardScheduleRangeE.rangeTop;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeE;
-        range.rangeTop = value;
-        this.setGiftCardScheduleRangeE(range);
-      },
-    },
-
-    selectedGiftCardDownRangeE: {
-      get() {
-        return this.giftCardScheduleRangeE.rangeDown;
-      },
-      set(value) {
-        const range = this.giftCardScheduleRangeE;
-        range.rangeDown = value;
-        this.setGiftCardScheduleRangeE(range);
-      },
-    },
-    selectedGiftCardRangeEStatus: {
-      get() {
-        if (this.giftCardScheduleRangeE.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.giftCardScheduleRangeE;
-        if (value === "accepted") {
-          status.given = true;
-          this.setGiftCardScheduleRangeE(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setGiftCardScheduleRangeE(status);
-        }
-      },
-    },
-
-    //RANGES TOP A
-    selectedTopPriceScheduleRangeAUp: {
-      get() {
-        return this.topPriceScheduleRangeA.rangeTop;
-      },
-      set(value) {
-        const range = this.topPriceScheduleRangeA;
-        range.rangeTop = value;
-        this.setTopPriceScheduleRangeA(range);
-      },
-    },
-
-    selectedTopPriceScheduleRangeADown: {
-      get() {
-        return this.topPriceScheduleRangeA.rangeDown;
-      },
-      set(value) {
-        const range = this.topPriceScheduleRangeA;
-        range.rangeDown = value;
-        this.setTopPriceScheduleRangeA(range);
-      },
-    },
-    selectedTopPriceScheduleRangeAStatus: {
-      get() {
-        if (this.topPriceScheduleRangeA.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.topPriceScheduleRangeA;
-        if (value === "accepted") {
-          status.given = true;
-          this.setTopPriceScheduleRangeA(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setTopPriceScheduleRangeA(status);
-        }
-      },
-    },
-
-    //RANGES TOP B
-    selectedTopPriceScheduleRangeBUp: {
-      get() {
-        return this.topPriceScheduleRangeB.rangeTop;
-      },
-      set(value) {
-        const range = this.topPriceScheduleRangeB;
-        range.rangeTop = value;
-        this.setTopPriceScheduleRangeB(range);
-      },
-    },
-
-    selectedTopPriceScheduleRangeBDown: {
-      get() {
-        return this.topPriceScheduleRangeB.rangeDown;
-      },
-      set(value) {
-        const range = this.topPriceScheduleRangeB;
-        range.rangeDown = value;
-        this.setTopPriceScheduleRangeB(range);
-      },
-    },
-    selectedTopPriceScheduleRangeBStatus: {
-      get() {
-        if (this.topPriceScheduleRangeB.given) {
-          return "accepted";
-        }
-        return "not_accepted";
-      },
-      set(value) {
-        const status = this.topPriceScheduleRangeB;
-        if (value === "accepted") {
-          status.given = true;
-          this.setTopPriceScheduleRangeB(status);
-        } else {
-          const given = false;
-          status.given = given;
-          this.setTopPriceScheduleRangeB(status);
-        }
-      },
-    },
-
-    ///
 
     selectedTotalReplay: {
       get() {
@@ -580,7 +149,7 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalReplay(val);
-      },
+      }
     },
 
     selectedTotalSpecialPrice: {
@@ -590,7 +159,7 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalSpecialPrice(val);
-      },
+      }
     },
     selectedTotalSpecialSuprise: {
       get() {
@@ -599,7 +168,7 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalSpecialSurprise(val);
-      },
+      }
     },
 
     selectedTotalTopPrice: {
@@ -609,7 +178,7 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalTopPrice(val);
-      },
+      }
     },
 
     selectedTotalGiftCard: {
@@ -619,7 +188,7 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalGiftCard(val);
-      },
+      }
     },
 
     selectedTotalSpin: {
@@ -629,8 +198,8 @@ export default {
       set(value) {
         const val = parseInt(value);
         this.setTotalSpin(val);
-      },
-    },
+      }
+    }
   },
   methods: {
     ...mapActions([
@@ -641,14 +210,8 @@ export default {
       "setTotalGiftCard",
       "setTotalSpin",
 
-      "setGiftCardScheduleRangeA",
-      "setGiftCardScheduleRangeB",
-      "setGiftCardScheduleRangeC",
-      "setGiftCardScheduleRangeD",
-      "setGiftCardScheduleRangeE",
-
-      "setTopPriceScheduleRangeA",
-      "setTopPriceScheduleRangeB",
+      "setGiftCards",
+       "setTopPrices"
     ]),
     async getTotals() {
       const response = await service.getTotals();
@@ -657,67 +220,21 @@ export default {
       this.setTotalSpecialSurprise(response.totalSpecialSurprice);
       this.setTotalTopPrice(response.totalTopPrice);
       this.setTotalGiftCard(response.totalGitfCard);
-      this.setTotalSpin(response.totalSpin)
+      this.setTotalSpin(response.totalSpin);
     },
 
-    async getScheduleRange() {
-      const response = await service.getHour();
-      this.setGiftCardScheduleRangeA(response.giftCardScheduleRangeA);
-      this.setGiftCardScheduleRangeB(response.giftCardScheduleRangeB);
-      this.setGiftCardScheduleRangeC(response.giftCardScheduleRangeC);
-      this.setGiftCardScheduleRangeD(response.giftCardScheduleRangeD);
-      this.setGiftCardScheduleRangeE(response.giftCardScheduleRangeE);
+    async getWinners() {
+      const giftCard = await service.getGiftCards();
+      const topPrices = await service.getTopPrices();
 
-      this.setTopPriceScheduleRangeA(response.topPriceScheduleRangeA);
-      this.setTopPriceScheduleRangeB(response.topPriceScheduleRangeB);
-
-      this.setGif;
+      this.setGiftCards(giftCard);
+      this.setTopPrices(topPrices)
     },
+
     refresh() {
       this.getTotals();
-      this.getScheduleRange();
-      alert('The data was refresh')
-
-      /*const schedu = {
-        giftCardScheduleRangeA: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-        giftCardScheduleRangeB: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-        giftCardScheduleRangeC: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-        giftCardScheduleRangeD: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-
-        giftCardScheduleRangeE: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-
-        topPriceScheduleRangeA: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-        topPriceScheduleRangeB: {
-          rangeTop: "00:00",
-          rangeDown: "00:00",
-          given: false,
-        },
-      };
-      service.setHour(schedu);*/
+      this.getWinners();
+      alert("The data was refresh");
     },
     onSubmit() {
       if (this.selectedTotalReplay < 0) {
@@ -758,51 +275,18 @@ export default {
         totalGitfCard: this.selectedTotalGiftCard,
         totalSpin: this.totalSpin
       };
-      const schedu = {
-        giftCardScheduleRangeA: {
-          rangeTop: this.giftCardScheduleRangeA.rangeTop,
-          rangeDown: this.giftCardScheduleRangeA.rangeDown,
-          given: this.giftCardScheduleRangeA.given,
-        },
-        giftCardScheduleRangeB: {
-          rangeTop: this.giftCardScheduleRangeB.rangeTop,
-          rangeDown: this.giftCardScheduleRangeB.rangeDown,
-          given: this.giftCardScheduleRangeB.given,
-        },
-        giftCardScheduleRangeC: {
-          rangeTop: this.giftCardScheduleRangeC.rangeTop,
-          rangeDown: this.giftCardScheduleRangeC.rangeDown,
-          given: this.giftCardScheduleRangeC.given,
-        },
-        giftCardScheduleRangeD: {
-          rangeTop: this.giftCardScheduleRangeD.rangeTop,
-          rangeDown: this.giftCardScheduleRangeD.rangeDown,
-          given: this.giftCardScheduleRangeD.given,
-        },
 
-        giftCardScheduleRangeE: {
-          rangeTop: this.giftCardScheduleRangeE.rangeTop,
-          rangeDown: this.giftCardScheduleRangeE.rangeDown,
-          given: this.giftCardScheduleRangeE.given,
-        },
+      const giftCards = this.giftCards;
+      const topPrices = this.topPrices;
 
-        topPriceScheduleRangeA: {
-          rangeTop: this.topPriceScheduleRangeA.rangeTop,
-          rangeDown: this.topPriceScheduleRangeA.rangeDown,
-          given: this.topPriceScheduleRangeA.given,
-        },
-        topPriceScheduleRangeB: {
-          rangeTop: this.topPriceScheduleRangeB.rangeTop,
-          rangeDown: this.topPriceScheduleRangeB.rangeDown,
-          given: this.topPriceScheduleRangeB.given,
-        },
-      };
       service.setNewTotal(data);
-      service.setHour(schedu);
+      service.setGiftCards(giftCards);
+      service.setTopPrices(topPrices);
+
 
       alert("All data is update");
       /*if(selectedTotalReplay)*/
-    },
-  },
+    }
+  }
 };
 </script>
