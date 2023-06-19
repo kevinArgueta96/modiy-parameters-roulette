@@ -39,16 +39,6 @@ export default {
       "setTotalTopPrice",
       "setTotalGiftCard",
       "setTotalSpin",
-      
-
-      "setGiftCardScheduleRangeA",
-      "setGiftCardScheduleRangeB",
-      "setGiftCardScheduleRangeC",
-      "setGiftCardScheduleRangeD",
-      "setGiftCardScheduleRangeE",
-
-      "setTopPriceScheduleRangeA",
-      "setTopPriceScheduleRangeB",
 
       "setGiftCards",
       "setTopPrices",
