@@ -17,7 +17,7 @@
         name="checkbox-1"
         value="accepted"
         unchecked-value="not_accepted"
-      >The price is given</b-form-checkbox>
+      ><p @click.prevent="">The price is given</p></b-form-checkbox>
     </div>
   </div>
 </template>
@@ -91,6 +91,8 @@ export default {
         return "not_accepted";
       },
       set(value) {
+        console.log(value);
+        console.log(this.indexGift);
         if (value === "accepted") {
           switch (this.type) {
             case "card":

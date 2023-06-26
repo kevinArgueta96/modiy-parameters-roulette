@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <FormComponent />
-    <div class="footer">
-      <!-- <div class="col-auto text-center p-5">
+    <!-- <div class="footer">
+      <div class="col-auto text-center p-5">
         <img src="/img/logo-img.png" class="img-fluid" alt="Responsive image" />
-      </div> -->
-    </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
