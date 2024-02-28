@@ -10,93 +10,59 @@
             <div class="row">
               <div class="col-md-2">
                 <b-form-group id="input-group-1" label="Total Replay" label-for="input-1">
-                  <b-form-input
-                    id="input-1"
-                    v-model="selectedTotalReplay"
-                    placeholder="Replay"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-1" v-model="selectedTotalReplay" placeholder="Replay" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-2">
                 <b-form-group id="input-group-2" label="Total Special Price" label-for="input-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="selectedTotalSpecialPrice"
-                    placeholder="Special Price"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-2" v-model="selectedTotalSpecialPrice" placeholder="Special Price" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-2">
                 <b-form-group id="input-group-3" label="Total Special Surprise" label-for="input-3">
-                  <b-form-input
-                    id="input-3"
-                    v-model="selectedTotalSpecialSuprise"
-                    placeholder="Special Surpise"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-3" v-model="selectedTotalSpecialSuprise" placeholder="Special Surpise" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-2">
                 <b-form-group id="input-group-4" label="Total Top Price" label-for="input-4">
-                  <b-form-input
-                    id="input-4"
-                    v-model="selectedTotalTopPrice"
-                    placeholder="Top Price"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-4" v-model="selectedTotalTopPrice" placeholder="Top Price" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-2">
                 <b-form-group id="input-group-5" label="Total Gift Card" label-for="input-5">
-                  <b-form-input
-                    id="input-5"
-                    v-model="selectedTotalGiftCard"
-                    placeholder="Replay"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-5" v-model="selectedTotalGiftCard" placeholder="Replay" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-2">
                 <b-form-group id="input-group-21" label="Total Spin" label-for="input-21">
-                  <b-form-input
-                    id="input-5"
-                    v-model="selectedTotalSpin"
-                    placeholder="Spin"
-                    required
-                    type="number"
-                  ></b-form-input>
+                  <b-form-input id="input-5" v-model="selectedTotalSpin" placeholder="Spin" required
+                    type="number"></b-form-input>
                 </b-form-group>
               </div>
             </div>
 
             <h1>Gift Cards</h1>
             <div>
-              <GiftComponent
-                v-for="(giftCard, index) in giftCards"
-                :key="index"
-                :giftProperties="giftCard"
-                :indexGift="index"
-                :type="`card`"
-              />
+              <GiftComponent v-for="(giftCard, index) in giftCards" :key="index" :giftProperties="giftCard"
+                :indexGift="index" :type="`card`" />
             </div>
 
             <h1>Top Prices</h1>
             <div>
-              <GiftComponent
-                v-for="(topPrice, index) in topPrices"
-                :key="index"
-                :giftProperties="topPrice"
-                :indexGift="index"
-                :type="`top`"
-              />
+              <GiftComponent v-for="(topPrice, index) in topPrices" :key="index" :giftProperties="topPrice"
+                :indexGift="index" :type="`top`" />
+            </div>
+
+            <h1>Tesla Win</h1>
+            <div>
+              <GiftComponent v-for="(teslaPrice, index) in teslaPrices" :key="index" :giftProperties="teslaPrice"
+                :indexGift="index" :type="`tesla`" />
             </div>
 
             <div class="form-check d-flex justify-content-center mb-4">
@@ -137,9 +103,9 @@ export default {
       "totalTopPrice",
       "totalGiftCard",
       "totalSpin",
-
       "giftCards",
-      "topPrices"
+      "topPrices",
+      "teslaPrices"
     ]),
 
     selectedTotalReplay: {
@@ -147,8 +113,8 @@ export default {
         return this.totalReplay;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalReplay(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalReplay', val)
       }
     },
 
@@ -157,8 +123,8 @@ export default {
         return this.totalSpecialPrice;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalSpecialPrice(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalSpecialPrice', val)
       }
     },
     selectedTotalSpecialSuprise: {
@@ -166,8 +132,9 @@ export default {
         return this.totalSpecialSurprise;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalSpecialSurprise(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalSpecialSurprise', val)
+
       }
     },
 
@@ -176,8 +143,8 @@ export default {
         return this.totalTopPrice;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalTopPrice(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalTopPrice', val)
       }
     },
 
@@ -186,8 +153,8 @@ export default {
         return this.totalGiftCard;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalGiftCard(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalGiftCard', val)
       }
     },
 
@@ -196,40 +163,38 @@ export default {
         return this.totalSpin;
       },
       set(value) {
-        const val = parseInt(value);
-        this.setTotalSpin(val);
+        const val = value !== "" ? parseInt(value) : 0;
+        this.defineState('setTotalSpin', val)
       }
     }
   },
   methods: {
     ...mapActions([
-      "setTotalReplay",
-      "setTotalSpecialPrice",
-      "setTotalSpecialSurprise",
-      "setTotalTopPrice",
-      "setTotalGiftCard",
-      "setTotalSpin",
-
-      "setGiftCards",
-      "setTopPrices"
+      "updateState"
     ]),
     async getTotals() {
       const response = await service.getTotals();
-      this.setTotalReplay(response.totalReplay);
-      this.setTotalSpecialPrice(response.totalSpecialPrice);
-      this.setTotalSpecialSurprise(response.totalSpecialSurprice);
-      this.setTotalTopPrice(response.totalTopPrice);
-      this.setTotalGiftCard(response.totalGitfCard);
-      this.setTotalSpin(response.totalSpin);
+      if (response && response !== "error") {
+        this.updateState({ mutationType: 'setTotalReplay', payload: response.totalReplay });
+        this.updateState({ mutationType: 'setTotalSpecialPrice', payload: response.totalSpecialPrice });
+        this.updateState({ mutationType: 'setTotalSpecialSurprise', payload: response.totalSpecialSurprise });
+        this.updateState({ mutationType: 'setTotalTopPrice', payload: response.totalTopPrice });
+        this.updateState({ mutationType: 'setTotalGiftCard', payload: response.totalGiftCard });
+        this.updateState({ mutationType: 'setTotalSpin', payload: response.totalSpin });
+      }
     },
 
     async getWinners() {
-      const giftCard = await service.getGiftCards();
-      const topPrices = await service.getTopPrices();
-
-      this.setGiftCards(giftCard);
-      this.setTopPrices(topPrices);
+      const giftCardResponse = await service.getGiftCards();
+      const topPricesResponse = await service.getTopPrices();
+      if (giftCardResponse !== "error") {
+        this.updateState({ mutationType: 'setGiftCards', payload: giftCardResponse });
+      }
+      if (topPricesResponse !== "error") {
+        this.updateState({ mutationType: 'setTopPrices', payload: topPricesResponse });
+      }
     },
+
 
     refresh() {
       this.getTotals();
@@ -278,13 +243,23 @@ export default {
 
       const giftCards = this.giftCards;
       const topPrices = this.topPrices;
+      const teslaPrice = this.teslaPrices;
 
       service.setNewTotal(data);
       service.setGiftCards(giftCards);
       service.setTopPrices(topPrices);
+      service.setTeslaWinService(teslaPrice);
+
 
       alert("All data is update");
       /*if(selectedTotalReplay)*/
+    },
+
+    defineState(mutationType, payload) {
+      this.updateState({
+        mutationType: mutationType,
+        payload: payload
+      });
     }
   }
 };

@@ -6,14 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     totalReplay: 0,
-    totalSpecialPrice:0,
-    totalSpecialSurprise:0,
-    totalTopPrice:0,
-    totalGiftCard:0,
-    totalSpin:0,
+    totalSpecialPrice: 0,
+    totalSpecialSurprise: 0,
+    totalTopPrice: 0,
+    totalGiftCard: 0,
+    totalSpin: 0,
 
     giftCards: [],
     topPrices: [],
+    teslaPrices: [],
   },
   getters: {
     totalReplay: (state) => state.totalReplay,
@@ -22,27 +23,28 @@ export default new Vuex.Store({
     totalTopPrice: (state) => state.totalTopPrice,
     totalGiftCard: (state) => state.totalGiftCard,
     totalSpin: (state) => state.totalSpin,
-    
+
     giftCards: (state) => state.giftCards,
     topPrices: (state) => state.topPrices,
+    teslaPrices: (state) => state.teslaPrices,
   },
   mutations: {
-    setTotalReplay(state,payload){
+    setTotalReplay(state, payload) {
       state.totalReplay = payload;
     },
-    setTotalSpecialPrice(state,payload){
+    setTotalSpecialPrice(state, payload) {
       state.totalSpecialPrice = payload;
     },
-    setTotalSpecialSurprise(state,payload){
+    setTotalSpecialSurprise(state, payload) {
       state.totalSpecialSurprise = payload;
     },
-    setTotalTopPrice(state,payload){
+    setTotalTopPrice(state, payload) {
       state.totalTopPrice = payload;
     },
-    setTotalGiftCard(state,payload){
+    setTotalGiftCard(state, payload) {
       state.totalGiftCard = payload;
     },
-    setTotalSpin(state,payload){
+    setTotalSpin(state, payload) {
       state.totalSpin = payload;
     },
 
@@ -53,33 +55,13 @@ export default new Vuex.Store({
     setTopPrices(state, payload) {
       state.topPrices = payload;
     },
+    setTeslaPrices(state, payload) {
+      state.teslaPrices = payload;
+    },
   },
   actions: {
-    setTotalReplay(context,payload){
-      context.commit('setTotalReplay',payload)
-    },
-    setTotalSpecialPrice(context,payload){
-      context.commit('setTotalSpecialPrice',payload)
-    },
-    setTotalSpecialSurprise(context,payload){
-      context.commit('setTotalSpecialSurprise',payload)
-    },
-    setTotalTopPrice(context,payload){
-      context.commit('setTotalTopPrice',payload)
-    },
-    setTotalGiftCard(context,payload){
-      context.commit('setTotalGiftCard',payload)
-    },
-    setTotalSpin(context,payload){
-      context.commit('setTotalSpin',payload)
-
-    },
-
-    setGiftCards(context, payload) {
-      context.commit('setGiftCards', payload)
-    },
-    setTopPrices(context, payload) {
-      context.commit('setTopPrices', payload)
+    updateState({ commit }, { mutationType, payload }) {
+      commit(mutationType, payload);
     },
   },
   modules: {

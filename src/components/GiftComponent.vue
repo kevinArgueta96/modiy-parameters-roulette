@@ -11,13 +11,9 @@
       </b-form-group>
     </div>
     <div class="col">
-      <b-form-checkbox
-        id="checkbox-1"
-        v-model="given"
-        name="checkbox-1"
-        value="accepted"
-        unchecked-value="not_accepted"
-      ><p @click.prevent="">The price is given</p></b-form-checkbox>
+      <b-form-checkbox id="checkbox-1" v-model="given" name="checkbox-1" value="accepted" unchecked-value="not_accepted">
+        <p @click.prevent="">The price is given</p>
+      </b-form-checkbox>
     </div>
   </div>
 </template>
@@ -27,7 +23,33 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions(["setGiftCards", "setTopPrices"])
+    ...mapActions(["updateState"]),
+
+    updateGiftProperty(property, value) {
+      let giftArray, mutationType;
+
+      switch (this.type) {
+        case "card":
+          giftArray = [...this.giftCards];
+          mutationType = 'setGiftCards';
+          break;
+        case "top":
+          giftArray = [...this.topPrices];
+          mutationType = 'setTopPrices';
+          break;
+        case "tesla":
+          giftArray = [...this.teslaPrices]; 
+          mutationType = 'setTeslaPrices'; 
+          break;
+        default:
+          console.error("Tipo no reconocido:", this.type);
+          return; 
+      }
+
+      giftArray[this.indexGift][property] = value;
+
+      this.updateState({ mutationType, payload: giftArray });
+    },
   },
   props: {
     giftProperties: {
@@ -42,26 +64,14 @@ export default {
       default: ""
     }
   },
-
   computed: {
-    ...mapGetters(["giftCards", "topPrices"]),
+    ...mapGetters(["giftCards", "topPrices", "teslaPrices"]),
     rangeDown: {
       get() {
         return this.giftProperties.rangeDown;
       },
       set(value) {
-        switch (this.type) {
-          case "card":
-            this.giftCards[this.indexGift].rangeDown = value;
-            this.setGiftCards(this.giftCards);
-            break;
-          case "top":
-            this.topPrices[this.indexGift].rangeDown = value;
-            this.setTopPrices(this.topPrices);
-            break;
-          default:
-            return;
-        }
+        this.updateGiftProperty('rangeDown', value);
       }
     },
     rangeTop: {
@@ -69,62 +79,20 @@ export default {
         return this.giftProperties.rangeTop;
       },
       set(value) {
-        switch (this.type) {
-          case "card":
-            this.giftCards[this.indexGift].rangeTop = value;
-            this.setGiftCards(this.giftCards);
-            break;
-          case "top":
-            this.topPrices[this.indexGift].rangeTop = value;
-            this.setTopPrices(this.topPrices);
-            break;
-          default:
-            return;
-        }
+        this.updateGiftProperty('rangeTop', value);
       }
     },
     given: {
       get() {
-        if (this.giftProperties.given) {
-          return "accepted";
-        }
-        return "not_accepted";
+        return this.giftProperties.given ? "accepted" : "not_accepted";
       },
       set(value) {
-        console.log(value);
-        console.log(this.indexGift);
-        if (value === "accepted") {
-          switch (this.type) {
-            case "card":
-              this.giftCards[this.indexGift].given = true;
-              this.setGiftCards(this.giftCards);
-              break;
-            case "top":
-              this.topPrices[this.indexGift].given = true;
-              this.setTopPrices(this.topPrices);
-              break;
-            default:
-              return;
-          }
-        } else {
-          switch (this.type) {
-            case "card":
-              this.giftCards[this.indexGift].given = false;
-              this.setGiftCards(this.giftCards);
-              break;
-            case "top":
-              this.topPrices[this.indexGift].given = false;
-              this.setTopPrices(this.topPrices);
-              break;
-            default:
-              return;
-          }
-        }
+        const givenStatus = value === "accepted";
+        this.updateGiftProperty('given', givenStatus);
       }
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

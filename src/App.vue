@@ -29,43 +29,44 @@ export default {
     this.getTotals();
     this.getGiftCards();
     this.getTopPrices();
+    this.getTeslaData();
+
   },
   methods: {
     ...mapActions([
-      "setOptions",
-      "setTotalReplay",
-      "setTotalSpecialPrice",
-      "setTotalSpecialSurprise",
-      "setTotalTopPrice",
-      "setTotalGiftCard",
-      "setTotalSpin",
-
-      "setGiftCards",
-      "setTopPrices",
+      "updateState"
     ]),
     async getTotals() {
       const response = await service.getTotals();
-      this.setTotalReplay(response.totalReplay);
-      this.setTotalSpecialPrice(response.totalSpecialPrice);
-      this.setTotalSpecialSurprise(response.totalSpecialSurprice);
-      this.setTotalTopPrice(response.totalTopPrice);
-      this.setTotalGiftCard(response.totalGitfCard);
-      this.setTotalSpin(response.totalSpin)
+
+      this.updateState({ mutationType: 'setTotalReplay', payload: response.totalReplay });
+      this.updateState({ mutationType: 'setTotalSpecialPrice', payload: response.totalSpecialPrice });
+      this.updateState({ mutationType: 'setTotalSpecialSurprise', payload: response.totalSpecialSurprice });
+      this.updateState({ mutationType: 'setTotalTopPrice', payload: response.totalTopPrice });
+      this.updateState({ mutationType: 'setTotalGiftCard', payload: response.totalGitfCard });
+      this.updateState({ mutationType: 'setTotalSpin', payload: response.totalSpin });
     },
 
-  
+
 
     async getGiftCards() {
       const response = await service.getGiftCards();
       if (response !== "error") {
-        this.setGiftCards(Object.values(response));
+        this.updateState({ mutationType: 'setGiftCards', payload: Object.values(response) });
       }
     },
 
     async getTopPrices() {
       const response = await service.getTopPrices();
       if (response !== "error") {
-        this.setTopPrices(Object.values(response));
+        this.updateState({ mutationType: 'setTopPrices', payload: Object.values(response) });
+      }
+    },
+
+    async getTeslaData() {
+      const response = await service.getTeslaWin();
+      if (response !== "error") {
+        this.updateState({ mutationType: 'setTeslaPrices', payload: Object.values(response) });
       }
     },
   },
