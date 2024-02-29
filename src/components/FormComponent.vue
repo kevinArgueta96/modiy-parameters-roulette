@@ -174,12 +174,13 @@ export default {
     ]),
     async getTotals() {
       const response = await service.getTotals();
+      console.log(response)
       if (response && response !== "error") {
         this.updateState({ mutationType: 'setTotalReplay', payload: response.totalReplay });
         this.updateState({ mutationType: 'setTotalSpecialPrice', payload: response.totalSpecialPrice });
-        this.updateState({ mutationType: 'setTotalSpecialSurprise', payload: response.totalSpecialSurprise });
+        this.updateState({ mutationType: 'setTotalSpecialSurprise', payload: response.totalSpecialSurprice });
         this.updateState({ mutationType: 'setTotalTopPrice', payload: response.totalTopPrice });
-        this.updateState({ mutationType: 'setTotalGiftCard', payload: response.totalGiftCard });
+        this.updateState({ mutationType: 'setTotalGiftCard', payload: response.totalGitfCard });
         this.updateState({ mutationType: 'setTotalSpin', payload: response.totalSpin });
       }
     },
@@ -195,10 +196,18 @@ export default {
       }
     },
 
+    async getTeslaData() {
+      const response = await service.getTeslaWin();
+      if (response !== "error") {
+        this.updateState({ mutationType: 'setTeslaPrices', payload: Object.values(response) });
+      }
+    },
+
 
     refresh() {
       this.getTotals();
       this.getWinners();
+      this.getTeslaData();
       alert("The data was refresh");
     },
     onSubmit() {
