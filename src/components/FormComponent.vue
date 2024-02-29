@@ -174,7 +174,6 @@ export default {
     ]),
     async getTotals() {
       const response = await service.getTotals();
-      console.log(response)
       if (response && response !== "error") {
         this.updateState({ mutationType: 'setTotalReplay', payload: response.totalReplay });
         this.updateState({ mutationType: 'setTotalSpecialPrice', payload: response.totalSpecialPrice });
